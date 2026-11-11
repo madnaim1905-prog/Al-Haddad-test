@@ -1,0 +1,1771 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OEM Beverages Products | Al Haddad Manufacturing</title>
+    <meta name="description" content="Al Haddad Manufacturing Sdn. Bhd. - OEM / private label premix beverage manufacturing in Kedah, Malaysia. Coffee, cocoa, chocolate and tea-based premixes for your brand.">
+    <meta name="theme-color" content="#40E0D0">
+
+    <!-- Open Graph (pratonton WhatsApp / Facebook) -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Al Haddad Manufacturing">
+    <meta property="og:title" content="OEM Beverages Products | Al Haddad Manufacturing">
+    <meta property="og:description" content="OEM / private label premix beverage manufacturing. Coffee, cocoa and tea-based premixes for your brand.">
+    <meta property="og:url" content="https://www.oembeveragesproducts.com/">
+    <meta property="og:image" content="https://www.oembeveragesproducts.com/Kilang.jpg">
+
+    <!-- Favicon Menggunakan Logo Syarikat -->
+    <link rel="icon" type="image/jpeg" href="Company Logo.jpg">
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "name": "OEM Beverages Products",
+          "alternateName": "Al Haddad Manufacturing",
+          "url": "https://www.oembeveragesproducts.com/"
+        },
+        {
+          "@type": "Organization",
+          "name": "Al Haddad Manufacturing Sdn. Bhd.",
+          "url": "https://www.oembeveragesproducts.com/",
+          "logo": "https://www.oembeveragesproducts.com/Company%20Logo.jpg",
+          "email": "management.alhaddadmfg@gmail.com",
+          "telephone": "+60174699473",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "K01, K02 & K03 Kedah Halal Park, Fasa 2, Kawasan Perindustrian Sungai Petani",
+            "postalCode": "08000",
+            "addressLocality": "Sungai Petani",
+            "addressRegion": "Kedah",
+            "addressCountry": "MY"
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        turquoise: '#40E0D0',
+                        turquoiseDark: '#20B2AA',
+                        tealText: '#0F766E'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+        }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Penanda halaman aktif pada menu */
+        .nav-btn.active { background: rgba(64,224,208,.3); color: #000; font-weight: 700; }
+        .mobile-nav-btn.active { background: rgba(64,224,208,.3); font-weight: 700; }
+
+        /* ===== ANIMASI ===== */
+
+        /* 1. Peralihan halaman */
+        @keyframes pageIn {
+            from { opacity: 0; transform: translateY(24px); }
+            to   { opacity: 1; transform: none; }
+        }
+        .tab-content.active { animation: pageIn .6s cubic-bezier(.22,1,.36,1) both; }
+
+        /* 2. Hero berperingkat */
+        @keyframes heroIn {
+            from { opacity: 0; transform: translateY(28px); filter: blur(6px); }
+            to   { opacity: 1; transform: none; filter: blur(0); }
+        }
+        #page-home .hero-stack > * { animation: heroIn .8s cubic-bezier(.22,1,.36,1) both; }
+        #page-home .hero-stack > *:nth-child(1) { animation-delay: .1s; }
+        #page-home .hero-stack > *:nth-child(2) { animation-delay: .25s; }
+        #page-home .hero-stack > *:nth-child(3) { animation-delay: .4s; }
+        #page-home .hero-stack > *:nth-child(4) { animation-delay: .55s; }
+
+        /* 3. Scroll reveal */
+        .reveal {
+            opacity: 0; transform: translateY(36px);
+            transition: opacity .8s ease, transform .8s cubic-bezier(.22,1,.36,1);
+        }
+        .reveal.visible { opacity: 1; transform: none; }
+
+        /* 5. Bar kemajuan scroll */
+        #scroll-progress {
+            position: fixed; top: 0; left: 0; height: 3px; width: 0;
+            background: linear-gradient(90deg, #40E0D0, #20B2AA);
+            z-index: 100; transition: width .1s linear;
+        }
+
+        /* 6. Header mengecil */
+        header { transition: box-shadow .3s ease; }
+        header.scrolled { box-shadow: 0 8px 24px -12px rgba(0,0,0,.25); }
+        header .header-row { transition: height .3s ease; }
+        header.scrolled .header-row { height: 4rem; }
+
+        /* 7. Butang: kilau + riak */
+        .btn-shine { position: relative; overflow: hidden; }
+        .btn-shine::after {
+            content: ""; position: absolute; top: 0; left: -120%;
+            width: 60%; height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255,255,255,.55), transparent);
+            transform: skewX(-20deg); transition: left .7s ease; pointer-events: none;
+        }
+        .btn-shine:hover::after { left: 140%; }
+        .ripple {
+            position: absolute; border-radius: 50%; background: rgba(255,255,255,.6);
+            transform: scale(0); animation: rippleAnim .6s ease-out; pointer-events: none;
+        }
+        @keyframes rippleAnim { to { transform: scale(4); opacity: 0; } }
+
+        /* Tilt */
+        .tilting { transition: transform .15s ease-out !important; will-change: transform; }
+
+        /* Imej kad laman utama melayang perlahan */
+        @keyframes floaty { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+        #page-home .float-img { animation: floaty 4s ease-in-out infinite; }
+        #page-home .group:hover .float-img { animation-play-state: paused; }
+
+        /* Modal */
+        @keyframes modalIn {
+            from { opacity: 0; transform: translateY(16px) scale(.96); }
+            to   { opacity: 1; transform: none; }
+        }
+        .modal-box { animation: modalIn .35s cubic-bezier(.22,1,.36,1) both; }
+
+        /* Widget FIND US (hover di komputer, klik/tap di telefon) */
+        #social-wrap .pill {
+            max-width: 170px; overflow: hidden;
+            transition: max-width .5s ease-in-out;
+        }
+        #social-wrap .icons { opacity: 0; pointer-events: none; transition: opacity .5s ease .1s; }
+        #social-wrap.open .pill { max-width: min(380px, calc(100vw - 3rem)); }
+        #social-wrap.open .icons { opacity: 1; pointer-events: auto; }
+        #social-wrap.open .chev { transform: rotate(180deg); }
+        @media (hover: hover) {
+            #social-wrap:hover .pill { max-width: min(380px, calc(100vw - 3rem)); }
+            #social-wrap:hover .icons { opacity: 1; pointer-events: auto; }
+            #social-wrap:hover .chev { transform: rotate(180deg); }
+        }
+
+        /* Butang WhatsApp terapung berdenyut */
+        .wa-float::before {
+            content: ""; position: absolute; inset: 0; border-radius: 9999px;
+            background: rgba(22,163,74,.55); z-index: -1;
+            animation: waPulse 2.2s ease-out infinite;
+        }
+        @keyframes waPulse { 0% { transform: scale(1); opacity: .7; } 100% { transform: scale(1.7); opacity: 0; } }
+
+        /* Fokus papan kekunci yang jelas */
+        a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+            outline: 3px solid #0F766E; outline-offset: 2px;
+        }
+
+        /* Hormati pengguna yang kurangkan gerakan */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+            .reveal { opacity: 1 !important; transform: none !important; }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between antialiased bg-white text-black">
+
+    <div id="scroll-progress" aria-hidden="true"></div>
+
+    <!-- NAVIGATION HEADER -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20 header-row">
+
+                <!-- Logo & Nama Syarikat -->
+                <a href="#home" class="flex items-center gap-3" aria-label="Al Haddad Manufacturing - Home">
+                    <img src="Company Logo.jpg" alt="Al Haddad Manufacturing" class="h-12 sm:h-14 w-auto object-contain">
+                    <div class="flex flex-col">
+                        <span class="text-sm sm:text-base font-black tracking-tight text-black block leading-tight">
+                            AL HADDAD MANUFACTURING
+                        </span>
+                        <span class="text-[10px] font-bold text-tealText tracking-widest uppercase block">
+                            SDN. BHD.
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav -->
+                <nav class="hidden md:flex space-x-1 lg:space-x-2 items-center" aria-label="Main navigation">
+                    <a href="#home" class="nav-btn px-3 py-2 text-sm font-semibold rounded-lg transition-colors text-gray-800 hover:text-black hover:bg-gray-100" id="nav-home">Home</a>
+                    <a href="#oem" class="nav-btn px-3 py-2 text-sm font-semibold rounded-lg transition-colors text-gray-800 hover:text-black hover:bg-gray-100" id="nav-oem">OEM Manufacturing</a>
+                    <a href="#categories" class="nav-btn px-3 py-2 text-sm font-semibold rounded-lg transition-colors text-gray-800 hover:text-black hover:bg-gray-100" id="nav-categories">Product Categories</a>
+                    <a href="#quality" class="nav-btn px-3 py-2 text-sm font-semibold rounded-lg transition-colors text-gray-800 hover:text-black hover:bg-gray-100" id="nav-quality">Manufacturing & Quality</a>
+                    <a href="#about" class="nav-btn px-3 py-2 text-sm font-semibold rounded-lg transition-colors text-gray-800 hover:text-black hover:bg-gray-100" id="nav-about">About Us</a>
+                    <a href="#enquiry" class="btn-shine ml-2 px-5 py-2.5 text-sm font-bold rounded-lg text-black bg-[#40E0D0] hover:bg-[#36c7b8] shadow transition-all flex items-center gap-2" id="nav-enquiry">
+                        <span>Start OEM Project</span>
+                        <i class="fa-solid fa-arrow-right text-xs" aria-hidden="true"></i>
+                    </a>
+                </nav>
+
+                <!-- Mobile Hamburger Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" type="button" class="p-2 rounded-md text-black hover:bg-gray-100" onclick="toggleMobileMenu()" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+                        <i class="fa-solid fa-bars text-xl" id="menu-icon" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="hidden md:hidden border-b border-gray-200 bg-white px-4 pt-2 pb-4 space-y-1" id="mobile-menu">
+            <a href="#home" class="mobile-nav-btn block w-full text-left px-3 py-2 text-base font-semibold text-gray-800 rounded-md hover:bg-gray-100" data-tab="home">Home</a>
+            <a href="#oem" class="mobile-nav-btn block w-full text-left px-3 py-2 text-base font-semibold text-gray-800 rounded-md hover:bg-gray-100" data-tab="oem">OEM Manufacturing</a>
+            <a href="#categories" class="mobile-nav-btn block w-full text-left px-3 py-2 text-base font-semibold text-gray-800 rounded-md hover:bg-gray-100" data-tab="categories">Product Categories</a>
+            <a href="#quality" class="mobile-nav-btn block w-full text-left px-3 py-2 text-base font-semibold text-gray-800 rounded-md hover:bg-gray-100" data-tab="quality">Manufacturing & Quality</a>
+            <a href="#about" class="mobile-nav-btn block w-full text-left px-3 py-2 text-base font-semibold text-gray-800 rounded-md hover:bg-gray-100" data-tab="about">About Us</a>
+            <a href="#enquiry" class="mobile-nav-btn block w-full text-left px-3 py-2 text-base font-bold text-black bg-[#40E0D0] rounded-md mt-2" data-tab="enquiry">Start OEM Project</a>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="flex-grow">
+
+        <!-- ==================== PAGE 1: HOME ==================== -->
+        <section id="page-home" class="tab-content active">
+            <!-- Hero Section -->
+            <div class="relative bg-white text-black py-20 lg:py-28 overflow-hidden border-b border-gray-100">
+                <div class="absolute inset-0 z-0 overflow-hidden">
+                    <img id="hero-bg" src="Kilang.jpg" alt="Al Haddad Manufacturing Factory" class="w-full h-full object-cover" style="transform: scale(1.12);">
+                    <!-- Lapisan putih cerun supaya teks di kiri kekal jelas dibaca -->
+                    <div class="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-white/40"></div>
+                </div>
+
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div class="max-w-3xl hero-stack">
+                        <span class="inline-block px-4 py-2 rounded-full text-sm font-extrabold bg-[#40E0D0] text-black mb-6 tracking-wide uppercase shadow-sm">
+                            Your Brand. Our Premix Manufacturing.
+                        </span>
+
+                        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight mb-6 text-black">
+                            OEM / PRIVATE LABEL PREMIX BEVERAGE MANUFACTURING
+                        </h1>
+                        <p class="text-lg sm:text-xl text-gray-800 font-normal leading-relaxed mb-8">
+                            Bring your beverage idea to life with Al Haddad Manufacturing. We manufacture premix beverages for businesses looking to create products under their own brands. Whether you have an existing formula or are starting with an idea, we help you explore the formulation, packaging and production requirements of your project.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <button onclick="switchTab('enquiry')" class="btn-shine px-7 py-3.5 rounded-lg text-black bg-[#40E0D0] hover:bg-[#36c7b8] font-bold shadow-lg transition-all text-center flex items-center justify-center gap-2">
+                                <span>Discuss Your OEM Project</span>
+                                <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                            </button>
+                            <a href="https://wa.me/60174699473?text=Hello%20Al%20Haddad%20Manufacturing,%20I%20would%20like%20to%20discuss%20an%20OEM%20beverage%20project." target="_blank" rel="noopener noreferrer" class="px-7 py-3.5 rounded-lg text-white bg-green-700 hover:bg-green-600 font-bold shadow transition-all text-center flex items-center justify-center gap-2">
+                                <i class="fa-brands fa-whatsapp text-lg" aria-hidden="true"></i>
+                                <span>WhatsApp Our Team</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Value Proposition -->
+            <div class="py-16 bg-white border-b border-gray-100">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center max-w-3xl mx-auto mb-12">
+                        <h2 class="text-3xl font-bold text-black mb-4">Premix Beverages for Your Brand</h2>
+                        <p class="text-gray-700 text-lg">Explore coffee, cocoa, chocolate and tea-based premixes tailored to your product concept and target market.</p>
+                        <p class="text-sm text-gray-600 mt-2">Our team works with you to establish clear product specifications, suitable packaging and practical production arrangements.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <!-- Coffee-Based Premixes -->
+                        <a href="#categories" class="p-8 rounded-2xl bg-gray-50 border border-gray-200 card-hover group flex flex-col justify-between">
+                            <div>
+                                <div class="w-full h-48 mb-6 flex items-center justify-center overflow-hidden rounded-xl bg-white p-2 border border-gray-100">
+                                    <img src="TAC.png" alt="Tamar Coffee Arabica" loading="lazy" decoding="async" class="float-img h-full object-contain group-hover:scale-105 transition-transform duration-300">
+                                </div>
+                                <h3 class="text-xl font-bold text-black mb-2">Coffee-Based Premixes</h3>
+                                <p class="text-gray-700 text-sm leading-relaxed mb-4">Customized aroma, creaminess, and sweetness tailored to modern coffee lovers.</p>
+                            </div>
+                            <span class="text-xs font-semibold text-tealText flex items-center gap-1 mt-2">Explore Coffee Options <i class="fa-solid fa-chevron-right text-[10px]" aria-hidden="true"></i></span>
+                        </a>
+
+                        <!-- Cocoa & Chocolate -->
+                        <a href="#categories" class="p-8 rounded-2xl bg-gray-50 border border-gray-200 card-hover group flex flex-col justify-between">
+                            <div>
+                                <div class="w-full h-48 mb-6 flex items-center justify-center overflow-hidden rounded-xl bg-white p-2 border border-gray-100">
+                                    <img src="TC.png" alt="Tamar Cocoa" loading="lazy" decoding="async" class="float-img h-full object-contain group-hover:scale-105 transition-transform duration-300">
+                                </div>
+                                <h3 class="text-xl font-bold text-black mb-2">Cocoa & Chocolate</h3>
+                                <p class="text-gray-700 text-sm leading-relaxed mb-4">Rich, indulgent malt cocoa blends for family & lifestyle market segments.</p>
+                            </div>
+                            <span class="text-xs font-semibold text-tealText flex items-center gap-1 mt-2">Explore Cocoa Options <i class="fa-solid fa-chevron-right text-[10px]" aria-hidden="true"></i></span>
+                        </a>
+
+                        <!-- Tea-Based Premixes -->
+                        <a href="#categories" class="p-8 rounded-2xl bg-gray-50 border border-gray-200 card-hover group flex flex-col justify-between">
+                            <div>
+                                <div class="w-full h-48 mb-6 flex items-center justify-center overflow-hidden rounded-xl bg-white p-2 border border-gray-100">
+                                    <img src="TT.png" alt="Tamar Teh Tarik" loading="lazy" decoding="async" class="float-img h-full object-contain group-hover:scale-105 transition-transform duration-300">
+                                </div>
+                                <h3 class="text-xl font-bold text-black mb-2">Tea-Based Premixes</h3>
+                                <p class="text-gray-700 text-sm leading-relaxed mb-4">Authentic Teh Tarik, Green Tea Latte, and herbal infusion blends.</p>
+                            </div>
+                            <span class="text-xs font-semibold text-tealText flex items-center gap-1 mt-2">Explore Tea Options <i class="fa-solid fa-chevron-right text-[10px]" aria-hidden="true"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4-Step Process Section -->
+            <div class="py-20 bg-[#40E0D0]">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center max-w-2xl mx-auto mb-16">
+                        <span class="text-xs font-bold uppercase tracking-wider text-black">Simple Workflow</span>
+                        <h2 class="text-3xl font-extrabold text-black mt-1">From Idea to Production</h2>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm relative">
+                            <span class="text-4xl font-extrabold text-black block mb-3">01</span>
+                            <h3 class="text-lg font-bold text-black mb-2">Share Your Idea</h3>
+                            <p class="text-sm text-gray-700 leading-relaxed">Tell us about your product concept, preferred taste, packaging and estimated quantity.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm relative">
+                            <span class="text-4xl font-extrabold text-black block mb-3">02</span>
+                            <h3 class="text-lg font-bold text-black mb-2">Develop Product</h3>
+                            <p class="text-sm text-gray-700 leading-relaxed">Discuss formulation options and sampling requirements to establish your product's direction.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm relative">
+                            <span class="text-4xl font-extrabold text-black block mb-3">03</span>
+                            <h3 class="text-lg font-bold text-black mb-2">Confirm Details</h3>
+                            <p class="text-sm text-gray-700 leading-relaxed">Agree on specifications, packaging, quotation and the required approvals.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm relative">
+                            <span class="text-4xl font-extrabold text-black block mb-3">04</span>
+                            <h3 class="text-lg font-bold text-black mb-2">Plan Production</h3>
+                            <p class="text-sm text-gray-700 leading-relaxed">Production is arranged according to approved specifications and the agreed schedule.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Portfolio Experience Showcase -->
+            <div class="py-20 bg-white">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-wider text-tealText">Proven Expertise</span>
+                            <h2 class="text-3xl font-extrabold text-black mt-2 mb-6">Experience in Premix Beverages</h2>
+                            <p class="text-gray-700 leading-relaxed mb-6">
+                                Our portfolio includes products under brands such as <span class="font-bold text-black">Tamar</span> and <span class="font-bold text-black">Malt-IQ</span>, with experience across coffee, cocoa and tea-based beverages.
+                            </p>
+                            <p class="text-sm text-gray-600 leading-relaxed mb-8">
+                                Explore our product categories and discuss the options that could work for your brand.
+                            </p>
+                            <button onclick="switchTab('categories')" class="btn-shine px-6 py-3 rounded-lg bg-turquoise text-black font-bold hover:bg-turquoiseDark transition-colors inline-flex items-center gap-2">
+                                <span>Explore Our Product Categories</span>
+                                <i class="fa-solid fa-arrow-right text-xs" aria-hidden="true"></i>
+                            </button>
+                        </div>
+
+                        <div>
+                            <div class="w-full overflow-hidden rounded-2xl shadow-lg border border-gray-200 bg-gray-50">
+                                <img src="All.jpg" alt="Excellence Premix Dates Beverage Portfolio" loading="lazy" decoding="async" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA Banner -->
+            <div class="bg-black text-white py-16">
+                <div class="max-w-5xl mx-auto px-4 text-center">
+                    <h2 class="text-3xl font-bold mb-4">Ready to Start Your Own Beverage Brand?</h2>
+                    <p class="text-gray-300 text-lg mb-8">Share your idea with us today and let's turn your vision into market-ready products.</p>
+                    <button onclick="switchTab('enquiry')" class="btn-shine px-8 py-4 rounded-xl bg-turquoise text-black font-bold hover:bg-turquoiseDark shadow-lg transition-transform hover:scale-105">
+                        Start an OEM Enquiry
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== PAGE 2: OEM MANUFACTURING ==================== -->
+        <section id="page-oem" class="tab-content">
+            <div class="bg-black text-white py-16">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <h1 class="text-3xl sm:text-4xl font-extrabold mb-4">Premix Beverage Manufacturing for Your Brand</h1>
+                    <p class="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">Develop a premix beverage that fits your brand, customers and market. Al Haddad Manufacturing offers OEM premix beverage manufacturing, with formulation development and customisation discussed according to your project requirements.</p>
+                </div>
+            </div>
+
+            <!-- Section 1 -->
+            <div class="bg-white py-16">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                        <div class="lg:col-span-7">
+                            <h2 class="text-2xl font-bold text-black mb-4">Start with an Idea or Existing Formula</h2>
+                            <p class="text-gray-700 mb-6">You may already have a formula, want to modify a product or need support developing a new concept.</p>
+                            <p class="text-sm font-semibold text-black mb-4 uppercase tracking-wider">Our initial discussion covers:</p>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                <div class="flex items-start gap-3 p-3 rounded-lg bg-gray-50 border border-gray-200">
+                                    <i class="fa-solid fa-check-circle text-tealText mt-1" aria-hidden="true"></i>
+                                    <span class="text-sm text-gray-800">Beverage category and preferred taste.</span>
+                                </div>
+                                <div class="flex items-start gap-3 p-3 rounded-lg bg-gray-50 border border-gray-200">
+                                    <i class="fa-solid fa-check-circle text-tealText mt-1" aria-hidden="true"></i>
+                                    <span class="text-sm text-gray-800">Formulation and ingredient requirements.</span>
+                                </div>
+                                <div class="flex items-start gap-3 p-3 rounded-lg bg-gray-50 border border-gray-200">
+                                    <i class="fa-solid fa-check-circle text-tealText mt-1" aria-hidden="true"></i>
+                                    <span class="text-sm text-gray-800">Sachet or pack weight.</span>
+                                </div>
+                                <div class="flex items-start gap-3 p-3 rounded-lg bg-gray-50 border border-gray-200">
+                                    <i class="fa-solid fa-check-circle text-tealText mt-1" aria-hidden="true"></i>
+                                    <span class="text-sm text-gray-800">Packaging format and design requirements.</span>
+                                </div>
+                                <div class="flex items-start gap-3 p-3 rounded-lg bg-gray-50 border border-gray-200">
+                                    <i class="fa-solid fa-check-circle text-tealText mt-1" aria-hidden="true"></i>
+                                    <span class="text-sm text-gray-800">Estimated order quantity.</span>
+                                </div>
+                                <div class="flex items-start gap-3 p-3 rounded-lg bg-gray-50 border border-gray-200">
+                                    <i class="fa-solid fa-check-circle text-tealText mt-1" aria-hidden="true"></i>
+                                    <span class="text-sm text-gray-800">Target market and expected launch timing.</span>
+                                </div>
+                                <div class="flex items-start gap-3 p-3 rounded-lg bg-gray-50 border border-gray-200 sm:col-span-2">
+                                    <i class="fa-solid fa-check-circle text-tealText mt-1" aria-hidden="true"></i>
+                                    <span class="text-sm text-gray-800">Relevant quality and certification requirements.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Interactive Batch Estimator -->
+                        <div class="lg:col-span-5 bg-gray-50 p-6 rounded-2xl border border-gray-200 shadow-md">
+                            <div class="flex items-center gap-2 mb-4">
+                                <i class="fa-solid fa-sliders text-tealText text-xl" aria-hidden="true"></i>
+                                <h3 class="text-lg font-bold text-black">Interactive Batch Estimator</h3>
+                            </div>
+                            <p class="text-xs text-gray-600 mb-6">Estimate your total production volume and sachet yield based on your requirements.</p>
+
+                            <div class="space-y-4">
+                                <div>
+                                    <label for="est-weight" class="text-xs font-semibold text-gray-800 block mb-1">Target Sachet Weight (grams)</label>
+                                    <input type="range" id="est-weight" min="15" max="45" value="25" class="w-full accent-turquoise" oninput="updateEstimator()">
+                                    <div class="flex justify-between text-xs font-bold text-gray-700 mt-1">
+                                        <span>15g</span>
+                                        <span id="weight-val" class="text-tealText">25g per sachet</span>
+                                        <span>45g</span>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label for="est-pack-size" class="text-xs font-semibold text-gray-800 block mb-1">Target Box / Bag Quantity (Sachets per pack)</label>
+                                    <select id="est-pack-size" class="w-full text-xs p-2.5 rounded-md border border-gray-200 bg-white" onchange="updateEstimator()">
+                                        <option value="10">10 Sachets / Pack</option>
+                                        <option value="15" selected>15 Sachets / Pack</option>
+                                        <option value="20">20 Sachets / Pack</option>
+                                        <option value="30">30 Sachets / Pack</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label for="est-packs" class="text-xs font-semibold text-gray-800 block mb-1">Target Production Units (Packs)</label>
+                                    <input type="number" id="est-packs" value="1000" min="500" step="100" class="w-full text-xs p-2.5 rounded-md border border-gray-200 bg-white" oninput="updateEstimator()">
+                                </div>
+
+                                <div class="p-4 bg-white rounded-xl border border-gray-200 space-y-2 text-xs" aria-live="polite">
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600">Total Sachets Required:</span>
+                                        <span class="font-bold text-black" id="res-sachets">15,000 sachets</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600">Est. Total Powder Mass:</span>
+                                        <span class="font-bold text-tealText" id="res-mass">375.0 kg</span>
+                                    </div>
+                                </div>
+
+                                <button onclick="switchTab('enquiry')" class="btn-shine w-full py-2.5 text-xs font-bold rounded-lg text-black bg-turquoise hover:bg-turquoiseDark transition-colors">
+                                    Discuss This Batch Plan
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 2 -->
+            <div class="bg-turquoise py-16">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm flex flex-col justify-between">
+                            <div>
+                                <div class="w-full mb-6 overflow-hidden rounded-xl">
+                                    <img src="Lab.jpg" alt="Formulation Development & Lab Testing" loading="lazy" decoding="async" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300">
+                                </div>
+                                <h3 class="text-xl font-bold text-black mb-3">Formulation Development and Customisation</h3>
+                                <p class="text-sm text-gray-700 leading-relaxed mb-4">
+                                    Discuss the flavour, sweetness, ingredients and serving size you want for your product.
+                                </p>
+                            </div>
+                            <p class="text-xs text-gray-600 leading-relaxed pt-4 border-t border-gray-100">
+                                We will assess the technical requirements and agree on the development scope, sampling arrangements and associated costs before proceeding.
+                            </p>
+                        </div>
+
+                        <div class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm flex flex-col justify-between">
+                            <div>
+                                <div class="w-full mb-6 overflow-hidden rounded-xl">
+                                    <img src="Artwork.png" alt="Packaging and Artwork Design" loading="lazy" decoding="async" class="w-full h-auto object-cover hover:scale-105 transition-transform duration-300">
+                                </div>
+                                <h3 class="text-xl font-bold text-black mb-3">Packaging and Artwork</h3>
+                                <p class="text-sm text-gray-700 leading-relaxed mb-4">
+                                    Packaging plays a role in your product's presentation and suitability for production.
+                                </p>
+                            </div>
+                            <p class="text-xs text-gray-600 leading-relaxed pt-4 border-t border-gray-100">
+                                We can discuss packaging options, artwork requirements and printing arrangements. Material specifications, supply responsibilities and costs will be detailed in your quotation.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 3 -->
+            <div class="bg-white py-16">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="bg-gray-50 p-8 sm:p-12 rounded-3xl border border-gray-200 mb-16">
+                        <h2 class="text-2xl font-bold text-black text-center mb-10">Our OEM Process</h2>
+
+                        <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
+                            <div class="text-center">
+                                <div class="w-10 h-10 rounded-full bg-turquoise text-black font-bold flex items-center justify-center mx-auto mb-3">1</div>
+                                <h3 class="font-bold text-black text-sm mb-1">Enquiry</h3>
+                                <p class="text-xs text-gray-600">Share your product and business requirements.</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="w-10 h-10 rounded-full bg-turquoise text-black font-bold flex items-center justify-center mx-auto mb-3">2</div>
+                                <h3 class="font-bold text-black text-sm mb-1">Assessment</h3>
+                                <p class="text-xs text-gray-600">Review formulation, packaging, quantity and manufacturing suitability.</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="w-10 h-10 rounded-full bg-turquoise text-black font-bold flex items-center justify-center mx-auto mb-3">3</div>
+                                <h3 class="font-bold text-black text-sm mb-1">Product Dev</h3>
+                                <p class="text-xs text-gray-600">Proceed with agreed formulation development or sampling work.</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="w-10 h-10 rounded-full bg-turquoise text-black font-bold flex items-center justify-center mx-auto mb-3">4</div>
+                                <h3 class="font-bold text-black text-sm mb-1">Confirmation</h3>
+                                <p class="text-xs text-gray-600">Approve quotation, final specs and artwork.</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="w-10 h-10 rounded-full bg-turquoise text-black font-bold flex items-center justify-center mx-auto mb-3">5</div>
+                                <h3 class="font-bold text-black text-sm mb-1">Production</h3>
+                                <p class="text-xs text-gray-600">Manufacturing is scheduled after commercial arrangements.</p>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 pt-6 border-t border-gray-200 text-center">
+                            <p class="text-xs text-gray-600 italic mb-6">Minimum order quantities (MOQ) and lead times depend on the formulation and packaging format.</p>
+                            <button onclick="switchTab('enquiry')" class="btn-shine px-8 py-3 rounded-lg bg-turquoise text-black font-bold hover:bg-turquoiseDark transition-colors">
+                                Discuss Your OEM Project
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- MACHINERY & EQUIPMENT -->
+                    <div class="bg-white p-8 sm:p-10 rounded-3xl border border-gray-200 shadow-sm space-y-8">
+                        <div class="text-center max-w-3xl mx-auto">
+                            <h2 class="text-2xl sm:text-3xl font-bold text-black mb-3 flex items-center justify-center gap-3">
+                                <i class="fa-solid fa-gears text-tealText" aria-hidden="true"></i>
+                                <span>Machinery & Production Capabilities</span>
+                            </h2>
+                            <p class="text-sm text-gray-700 leading-relaxed">
+                                Our state-of-the-art facility is fully equipped with advanced industrial packaging and blending systems to ensure uniform quality, high volume capacity, and strict hygiene compliance.
+                            </p>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                            <div class="bg-gray-50 rounded-2xl border border-gray-200 overflow-hidden flex flex-col justify-between shadow-xs hover:border-[#20B2AA]/50 transition-all duration-300">
+                                <div class="h-48 overflow-hidden bg-white">
+                                    <img src="Mixer.jpg" alt="Industrial Powder Mixer" loading="lazy" decoding="async" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                                </div>
+                                <div class="p-5 flex flex-col flex-grow justify-between">
+                                    <div>
+                                        <h3 class="font-bold text-black text-sm mb-2">Industrial Powder Mixers</h3>
+                                        <p class="text-xs text-gray-600 leading-relaxed">
+                                            Heavy-duty stainless steel mixers with <strong>270kg / 500kg capacity</strong>, engineered to achieve homogenised dry premix blends with exact batch formulation consistency.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-gray-50 rounded-2xl border border-gray-200 overflow-hidden flex flex-col justify-between shadow-xs hover:border-[#20B2AA]/50 transition-all duration-300">
+                                <div class="h-48 overflow-hidden bg-white">
+                                    <img src="Storage Tank.jpg" alt="Powder Storage Tank" loading="lazy" decoding="async" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                                </div>
+                                <div class="p-5 flex flex-col flex-grow justify-between">
+                                    <div>
+                                        <h3 class="font-bold text-black text-sm mb-2">Bulk Powder Storage Silo</h3>
+                                        <p class="text-xs text-gray-600 leading-relaxed">
+                                            Hygienic enclosed storage silo featuring a <strong>2 Ton tank capacity</strong> designed for bulk raw material handling and seamless gravity-fed transfer into primary packaging lines.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-gray-50 rounded-2xl border border-gray-200 overflow-hidden flex flex-col justify-between shadow-xs hover:border-[#20B2AA]/50 transition-all duration-300">
+                                <div class="h-48 overflow-hidden bg-white">
+                                    <img src="Sachet.jpg" alt="Automatic Sachet Packaging Machine" loading="lazy" decoding="async" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                                </div>
+                                <div class="p-5 flex flex-col flex-grow justify-between">
+                                    <div>
+                                        <h3 class="font-bold text-black text-sm mb-2">Automated Sachet Line</h3>
+                                        <p class="text-xs text-gray-600 leading-relaxed">
+                                            Multi-lane vertical form-fill-seal system dedicated to high-speed, precise <strong>single-serve sachet packaging</strong> and tight heat sealing.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-gray-50 rounded-2xl border border-gray-200 overflow-hidden flex flex-col justify-between shadow-xs hover:border-[#20B2AA]/50 transition-all duration-300">
+                                <div class="h-48 overflow-hidden bg-white">
+                                    <img src="450.jpg" alt="450g Pouch Packaging Line" loading="lazy" decoding="async" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                                </div>
+                                <div class="p-5 flex flex-col flex-grow justify-between">
+                                    <div>
+                                        <h3 class="font-bold text-black text-sm mb-2">450g Pouch Packaging</h3>
+                                        <p class="text-xs text-gray-600 leading-relaxed">
+                                            Vertical pouch-filling line optimized for <strong>medium pack retail bags</strong>, integrated with screw conveyor elevators for accurate dispensing.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-gray-50 rounded-2xl border border-gray-200 overflow-hidden flex flex-col justify-between shadow-xs hover:border-[#20B2AA]/50 transition-all duration-300">
+                                <div class="h-48 overflow-hidden bg-white">
+                                    <img src="IMG_5657-1.jpg" alt="900g Pouch Packaging Line" loading="lazy" decoding="async" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                                </div>
+                                <div class="p-5 flex flex-col flex-grow justify-between">
+                                    <div>
+                                        <h3 class="font-bold text-black text-sm mb-2">900g Pouch Packaging</h3>
+                                        <p class="text-xs text-gray-600 leading-relaxed">
+                                            High-capacity packaging system engineered for precise volumetric dispensing of <strong>900g jumbo family size</strong> and commercial pouches.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-gray-50 rounded-2xl border border-gray-200 overflow-hidden flex flex-col justify-between shadow-xs hover:border-[#20B2AA]/50 transition-all duration-300">
+                                <div class="h-48 overflow-hidden bg-white">
+                                    <img src="IMG_5665-1.jpg" alt="Automatic Cutter Machine" loading="lazy" decoding="async" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                                </div>
+                                <div class="p-5 flex flex-col flex-grow justify-between">
+                                    <div>
+                                        <h3 class="font-bold text-black text-sm mb-2">Automated Film Cutter</h3>
+                                        <p class="text-xs text-gray-600 leading-relaxed">
+                                            Automated high-precision film slitting and cutting station ensuring <strong>exact precision trim dimensions</strong> and seamless outer packaging setup.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-gray-50 rounded-2xl border border-gray-200 overflow-hidden flex flex-col justify-between shadow-xs hover:border-[#20B2AA]/50 transition-all duration-300">
+                                <div class="h-48 overflow-hidden bg-white">
+                                    <img src="Shrink.jpg" alt="Shrink Wrap Machine" loading="lazy" decoding="async" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                                </div>
+                                <div class="p-5 flex flex-col flex-grow justify-between">
+                                    <div>
+                                        <h3 class="font-bold text-black text-sm mb-2">Thermal Shrink Wrapping</h3>
+                                        <p class="text-xs text-gray-600 leading-relaxed">
+                                            Thermal heat tunnel bundler designed for <strong>outer bundle shrink-wrapping</strong> of product boxes into sturdy secondary packaging for transport.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-gray-50 rounded-2xl border border-gray-200 overflow-hidden flex flex-col justify-between shadow-xs hover:border-[#20B2AA]/50 transition-all duration-300">
+                                <div class="h-48 overflow-hidden bg-white">
+                                    <img src="Print.jpg" alt="Continuous Inkjet Batch Printer" loading="lazy" decoding="async" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                                </div>
+                                <div class="p-5 flex flex-col flex-grow justify-between">
+                                    <div>
+                                        <h3 class="font-bold text-black text-sm mb-2">Continuous Inkjet Printer</h3>
+                                        <p class="text-xs text-gray-600 leading-relaxed">
+                                            Integrated inline coding system for high-speed printing of <strong>expiry dates and batch numbers</strong> to satisfy full quality compliance.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== PAGE 3: PRODUCT CATEGORIES ==================== -->
+        <section id="page-categories" class="tab-content">
+            <div class="bg-black text-white py-16">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <h1 class="text-3xl sm:text-4xl font-extrabold mb-4">Explore Premix Beverages for Your Brand</h1>
+                    <p class="text-gray-300 max-w-2xl mx-auto text-sm sm:text-base">Looking to launch a new beverage or expand your product range? Start with the category that suits your market.</p>
+                </div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                <div class="flex justify-center gap-2 mb-12 overflow-x-auto pb-2">
+                    <button onclick="filterCategory('all')" class="cat-filter-btn px-5 py-2 rounded-full text-xs font-bold border border-gray-200 bg-[#40E0D0] text-black transition-colors whitespace-nowrap" id="cat-btn-all">All Categories</button>
+                    <button onclick="filterCategory('coffee')" class="cat-filter-btn px-5 py-2 rounded-full text-xs font-bold border border-gray-200 bg-white text-gray-800 hover:bg-gray-100 transition-colors whitespace-nowrap" id="cat-btn-coffee">Coffee-Based</button>
+                    <button onclick="filterCategory('cocoa')" class="cat-filter-btn px-5 py-2 rounded-full text-xs font-bold border border-gray-200 bg-white text-gray-800 hover:bg-gray-100 transition-colors whitespace-nowrap" id="cat-btn-cocoa">Cocoa & Chocolate</button>
+                    <button onclick="filterCategory('tea')" class="cat-filter-btn px-5 py-2 rounded-full text-xs font-bold border border-gray-200 bg-white text-gray-800 hover:bg-gray-100 transition-colors whitespace-nowrap" id="cat-btn-tea">Tea-Based</button>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Coffee Card -->
+                    <div class="cat-card coffee bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden flex flex-col justify-between">
+                        <div class="p-6 flex flex-col h-full">
+                            <div class="w-full h-64 bg-gray-50/50 rounded-2xl flex items-center justify-center p-2 mb-6 overflow-hidden">
+                                <img src="SCL1.jpg" alt="Coffee-Based Premixes" loading="lazy" decoding="async" class="max-h-full max-w-full object-contain rounded-xl shadow-md hover:scale-105 transition-all duration-300">
+                            </div>
+                            <div class="flex flex-col flex-grow justify-between">
+                                <div>
+                                    <span class="text-xs font-bold text-tealText uppercase tracking-wider block mb-1">Category</span>
+                                    <h3 class="text-2xl font-bold text-black mb-3">Coffee-Based Premixes</h3>
+                                    <p class="text-sm text-gray-700 mb-6 leading-relaxed">
+                                        Discuss your preferred coffee profile, sweetness, creaminess and formulation requirements.
+                                    </p>
+                                </div>
+                                <div class="bg-gray-50 p-4 rounded-xl border border-gray-200 text-xs text-gray-800 mb-6">
+                                    <span class="font-semibold block mb-1 text-black">Portfolio Example:</span>
+                                    Tamar Arabica Coffee and other coffee-based products.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6 bg-gray-50 border-t border-gray-200">
+                            <button onclick="quickEnquire('Coffee')" class="btn-shine w-full py-2.5 rounded-lg bg-turquoise hover:bg-turquoiseDark text-black font-bold text-xs transition-colors">
+                                Discuss a Coffee Product
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Cocoa Card -->
+                    <div class="cat-card cocoa bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden flex flex-col justify-between">
+                        <div class="p-6 flex flex-col h-full">
+                            <div class="w-full h-64 bg-gray-50/50 rounded-2xl flex items-center justify-center p-2 mb-6 overflow-hidden">
+                                <img src="TC1.JPG" alt="Cocoa & Chocolate" loading="lazy" decoding="async" class="max-h-full max-w-full object-contain rounded-xl shadow-md hover:scale-105 transition-all duration-300">
+                            </div>
+                            <div class="flex flex-col flex-grow justify-between">
+                                <div>
+                                    <span class="text-xs font-bold text-tealText uppercase tracking-wider block mb-1">Category</span>
+                                    <h3 class="text-2xl font-bold text-black mb-3">Cocoa & Chocolate</h3>
+                                    <p class="text-sm text-gray-700 mb-6 leading-relaxed">
+                                        Explore a cocoa or chocolate beverage concept based on your preferred taste, serving size and target customers.
+                                    </p>
+                                </div>
+                                <div class="bg-gray-50 p-4 rounded-xl border border-gray-200 text-xs text-gray-800 mb-6">
+                                    <span class="font-semibold block mb-1 text-black">Portfolio Example:</span>
+                                    Tamar Cocoa is an example from our existing portfolio.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6 bg-gray-50 border-t border-gray-200">
+                            <button onclick="quickEnquire('Cocoa & Chocolate')" class="btn-shine w-full py-2.5 rounded-lg bg-turquoise hover:bg-turquoiseDark text-black font-bold text-xs transition-colors">
+                                Discuss a Cocoa or Chocolate Product
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Tea Card -->
+                    <div class="cat-card tea bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden flex flex-col justify-between">
+                        <div class="p-6 flex flex-col h-full">
+                            <div class="w-full h-64 bg-gray-50/50 rounded-2xl flex items-center justify-center p-2 mb-6 overflow-hidden">
+                                <img src="Adeni.JPG" alt="Tea-Based Premixes" loading="lazy" decoding="async" class="max-h-full max-w-full object-contain rounded-xl shadow-md hover:scale-105 transition-all duration-300">
+                            </div>
+                            <div class="flex flex-col flex-grow justify-between">
+                                <div>
+                                    <span class="text-xs font-bold text-tealText uppercase tracking-wider block mb-1">Category</span>
+                                    <h3 class="text-2xl font-bold text-black mb-3">Tea-Based Premixes</h3>
+                                    <p class="text-sm text-gray-700 mb-6 leading-relaxed">
+                                        Share your tea beverage idea, including your preferred tea profile, milk content and sweetness.
+                                    </p>
+                                </div>
+                                <div class="bg-gray-50 p-4 rounded-xl border border-gray-200 text-xs text-gray-800 mb-6">
+                                    <span class="font-semibold block mb-1 text-black">Portfolio Example:</span>
+                                    Tamar Teh Tarik, Tamar Teh Hijau Latte and Adeni Tea.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6 bg-gray-50 border-t border-gray-200">
+                            <button onclick="quickEnquire('Tea')" class="btn-shine w-full py-2.5 rounded-lg bg-turquoise hover:bg-turquoiseDark text-black font-bold text-xs transition-colors">
+                                Discuss a Tea Product
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Custom Idea Box -->
+                <div class="mt-16 bg-white p-8 rounded-2xl border border-gray-200 text-center max-w-3xl mx-auto shadow-sm">
+                    <h3 class="text-xl font-bold text-black mb-3">Have Another Beverage Idea?</h3>
+                    <p class="text-sm text-gray-700 mb-4 leading-relaxed">
+                        Share your concept so we can assess its suitability for development and manufacturing.
+                    </p>
+                    <p class="text-xs text-gray-600 italic mb-6">
+                        Existing products illustrate our experience. Formulations and specifications for your brand will be discussed and agreed separately.
+                    </p>
+                    <button onclick="quickEnquire('Other')" class="btn-shine px-8 py-3 rounded-lg bg-turquoise hover:bg-turquoiseDark text-black font-bold text-xs transition-colors">
+                        Enquire About Your Product
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== PAGE 4: MANUFACTURING & QUALITY ==================== -->
+        <section id="page-quality" class="tab-content">
+            <div class="bg-black text-white py-16">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <h1 class="text-3xl sm:text-4xl font-extrabold mb-4">Clear Specifications. Planned Production.</h1>
+                    <p class="text-gray-300 max-w-3xl mx-auto text-sm sm:text-base leading-relaxed">
+                        A successful OEM project starts with clear requirements and consistent communication. We review product, material, packaging and production requirements before confirming manufacturing arrangements.
+                    </p>
+                </div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-12">
+
+                <!-- 1. Quality and Certification -->
+                <div class="bg-white p-8 sm:p-10 rounded-2xl border border-gray-200 shadow-sm">
+                    <h2 class="text-2xl font-bold text-black mb-4 flex items-center gap-3">
+                        <i class="fa-solid fa-certificate text-tealText" aria-hidden="true"></i>
+                        <span>Quality and Certification</span>
+                    </h2>
+                    <p class="text-sm text-gray-700 leading-relaxed mb-10">
+                        Discuss your target market's quality and certification requirements with our team. We will clarify the documentation and scope relevant to your proposed product.
+                    </p>
+
+                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8 sm:gap-10 items-center justify-center mb-10">
+                        <div class="flex flex-col items-center group">
+                            <img src="Halal.jpeg" alt="Halal Malaysia" loading="lazy" decoding="async" class="h-28 sm:h-32 w-auto object-contain rounded-2xl shadow-lg hover:scale-110 transition-all duration-300 mb-3 bg-white p-1">
+                            <span class="text-xs font-bold text-gray-800 text-center tracking-wide">Halal Malaysia</span>
+                        </div>
+                        <div class="flex flex-col items-center group">
+                            <img src="GMP.jpeg" alt="GMP Certified" loading="lazy" decoding="async" class="h-28 sm:h-32 w-auto object-contain rounded-2xl shadow-lg hover:scale-110 transition-all duration-300 mb-3 bg-white p-1">
+                            <span class="text-xs font-bold text-gray-800 text-center tracking-wide">GMP Certified</span>
+                        </div>
+                        <div class="flex flex-col items-center group">
+                            <img src="HACCP.jpeg" alt="HACCP Certified" loading="lazy" decoding="async" class="h-28 sm:h-32 w-auto object-contain rounded-2xl shadow-lg hover:scale-110 transition-all duration-300 mb-3 bg-white p-1">
+                            <span class="text-xs font-bold text-gray-800 text-center tracking-wide">HACCP Certified</span>
+                        </div>
+                        <div class="flex flex-col items-center group">
+                            <img src="ISO.jpeg" alt="ISO 22000" loading="lazy" decoding="async" class="h-32 sm:h-36 w-auto object-contain rounded-2xl shadow-lg hover:scale-110 transition-all duration-300 mb-3 bg-white p-1">
+                            <span class="text-xs font-bold text-gray-800 text-center tracking-wide">ISO 22000</span>
+                        </div>
+                        <div class="flex flex-col items-center group col-span-2 sm:col-span-1">
+                            <img src="Buatan Malaysia.jpeg" alt="Buatan Malaysia" loading="lazy" decoding="async" class="h-32 sm:h-36 w-auto object-contain rounded-2xl shadow-lg hover:scale-110 transition-all duration-300 mb-3 bg-white p-1">
+                            <span class="text-xs font-bold text-gray-800 text-center tracking-wide">Buatan Malaysia</span>
+                        </div>
+                    </div>
+
+                    <div class="p-4 bg-turquoise/10 border border-turquoise/30 rounded-xl text-xs text-black space-y-1">
+                        <p class="font-semibold flex items-center gap-1.5"><i class="fa-solid fa-circle-info text-tealText" aria-hidden="true"></i> Verified Certification Scope:</p>
+                        <p class="text-gray-800">Certifications (e.g., HALAL, MeSTI, GMP, HACCP) will be confirmed according to verified scope and validity upon project registration.</p>
+                    </div>
+                </div>
+
+                <!-- 2. Product Requirements Checklist -->
+                <div class="bg-white p-8 sm:p-10 rounded-2xl border border-gray-200 shadow-sm">
+                    <h2 class="text-xl sm:text-2xl font-bold text-black mb-4 flex items-center gap-3">
+                        <i class="fa-solid fa-list-check text-tealText" aria-hidden="true"></i>
+                        <span>Product Requirements Checklist</span>
+                    </h2>
+                    <p class="text-sm text-gray-700 mb-6">Each project establishes the relevant parameters before commencement:</p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div class="p-4 bg-gray-50 rounded-xl border border-gray-200 flex items-center gap-3">
+                            <i class="fa-solid fa-flask text-tealText text-base" aria-hidden="true"></i>
+                            <span class="text-xs font-semibold text-gray-800">Formulation & ingredient specifications</span>
+                        </div>
+                        <div class="p-4 bg-gray-50 rounded-xl border border-gray-200 flex items-center gap-3">
+                            <i class="fa-solid fa-weight-scale text-tealText text-base" aria-hidden="true"></i>
+                            <span class="text-xs font-semibold text-gray-800">Sachet or pack weight parameters</span>
+                        </div>
+                        <div class="p-4 bg-gray-50 rounded-xl border border-gray-200 flex items-center gap-3">
+                            <i class="fa-solid fa-box text-tealText text-base" aria-hidden="true"></i>
+                            <span class="text-xs font-semibold text-gray-800">Packaging materials and format</span>
+                        </div>
+                        <div class="p-4 bg-gray-50 rounded-xl border border-gray-200 flex items-center gap-3">
+                            <i class="fa-solid fa-industry text-tealText text-base" aria-hidden="true"></i>
+                            <span class="text-xs font-semibold text-gray-800">Production quantity targets</span>
+                        </div>
+                        <div class="p-4 bg-gray-50 rounded-xl border border-gray-200 flex items-center gap-3">
+                            <i class="fa-solid fa-shield-halved text-tealText text-base" aria-hidden="true"></i>
+                            <span class="text-xs font-semibold text-gray-800">Quality criteria & acceptance scope</span>
+                        </div>
+                        <div class="p-4 bg-gray-50 rounded-xl border border-gray-200 flex items-center gap-3">
+                            <i class="fa-solid fa-file-contract text-tealText text-base" aria-hidden="true"></i>
+                            <span class="text-xs font-semibold text-gray-800">Required regulatory approvals</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Production Planning -->
+                <div class="bg-white p-8 sm:p-10 rounded-2xl border border-gray-200 shadow-sm space-y-8">
+                    <div>
+                        <h2 class="text-xl sm:text-2xl font-bold text-black mb-4 flex items-center gap-3">
+                            <i class="fa-solid fa-calendar-check text-tealText" aria-hidden="true"></i>
+                            <span>Production Planning & Manufacturing Process</span>
+                        </h2>
+                        <p class="text-sm text-gray-700 leading-relaxed mb-6">
+                            We review your proposed order quantity and expected launch date to establish a suitable production plan. Here is a glimpse of our precision manufacturing workflow:
+                        </p>
+                        <div class="p-4 bg-gray-50 border border-gray-200 rounded-xl text-xs text-gray-800 space-y-2 mb-8">
+                            <p class="font-semibold flex items-center gap-1.5"><i class="fa-solid fa-clock text-tealText" aria-hidden="true"></i> MOQ & Schedule Notice:</p>
+                            <p class="text-gray-700 leading-relaxed">MOQ, production availability and lead time will be confirmed in the quotation and project agreement.</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                        <div class="bg-gray-50 rounded-2xl border border-gray-200 overflow-hidden flex flex-col justify-between shadow-xs">
+                            <div class="h-48 overflow-hidden bg-white">
+                                <img src="enhanced_moisture_4k.jpg" alt="Quality Control & Moisture Analysis" loading="lazy" decoding="async" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                            </div>
+                            <div class="p-5 flex flex-col flex-grow justify-between">
+                                <div>
+                                    <h3 class="font-bold text-black text-sm mb-2">Quality Control & Moisture Analysis</h3>
+                                    <p class="text-xs text-gray-700 leading-relaxed">
+                                        Rigorous quality checks, including moisture content analysis, are conducted using advanced laboratory equipment to ensure optimal premix powder stability.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-gray-50 rounded-2xl border border-gray-200 overflow-hidden flex flex-col justify-between shadow-xs">
+                            <div class="h-48 overflow-hidden bg-white">
+                                <img src="enhanced_cocoa_4k.jpg" alt="Automated Primary Packaging" loading="lazy" decoding="async" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                            </div>
+                            <div class="p-5 flex flex-col flex-grow justify-between">
+                                <div>
+                                    <h3 class="font-bold text-black text-sm mb-2">Automated Primary Packaging</h3>
+                                    <p class="text-xs text-gray-700 leading-relaxed">
+                                        Modern automated packaging lines precisely control product sachet filling to maintain superior quality, hygiene, and ingredient freshness.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-gray-50 rounded-2xl border border-gray-200 overflow-hidden flex flex-col justify-between shadow-xs">
+                            <div class="h-48 overflow-hidden bg-white">
+                                <img src="enhanced_4k.jpg" alt="Precision Sealing & Wrapping" loading="lazy" decoding="async" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                            </div>
+                            <div class="p-5 flex flex-col flex-grow justify-between">
+                                <div>
+                                    <h3 class="font-bold text-black text-sm mb-2">Precision Sealing & Wrapping</h3>
+                                    <p class="text-xs text-gray-700 leading-relaxed">
+                                        Secondary packaging sealing processes are strictly regulated to guarantee finished goods remain flawless, secure, and compliant with industrial standards.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+
+                        <div class="bg-gray-50 rounded-2xl border border-gray-200 overflow-hidden flex flex-col justify-between shadow-xs">
+                            <div class="h-48 overflow-hidden bg-white">
+                                <img src="enhanced_conveyor_4k.jpg" alt="Automated Conveyor Workflow" loading="lazy" decoding="async" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                            </div>
+                            <div class="p-5 flex flex-col flex-grow justify-between">
+                                <div>
+                                    <h3 class="font-bold text-black text-sm mb-2">Automated Conveyor Workflow</h3>
+                                    <p class="text-xs text-gray-700 leading-relaxed">
+                                        Automated conveyor systems streamline product movement between stations efficiently, ensuring smooth production capacity aligned with schedule targets.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-gray-50 rounded-2xl border border-gray-200 overflow-hidden flex flex-col justify-between shadow-xs">
+                            <div class="h-48 overflow-hidden bg-white">
+                                <img src="Packing.jpg" alt="Expert Handling & Final Packaging" loading="lazy" decoding="async" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                            </div>
+                            <div class="p-5 flex flex-col flex-grow justify-between">
+                                <div>
+                                    <h3 class="font-bold text-black text-sm mb-2">Expert Handling & Final Packaging</h3>
+                                    <p class="text-xs text-gray-700 leading-relaxed">
+                                        Handled by skilled professionals adhering to strict hygiene protocols, ensuring every batch of finished products is carefully sorted, stacked, and packaged securely prior to dispatch.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="text-center pt-6">
+                    <button onclick="switchTab('enquiry')" class="btn-shine px-8 py-3.5 rounded-xl bg-turquoise text-black font-bold hover:bg-turquoiseDark shadow transition-colors">
+                        Discuss Your Manufacturing Requirements
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==================== PAGE 5: ABOUT US ==================== -->
+        <section id="page-about" class="tab-content">
+            <div class="bg-black text-white py-16">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <h1 class="text-3xl sm:text-4xl font-extrabold mb-4">Your Premix Beverage Manufacturing Partner</h1>
+                    <p class="text-gray-300 max-w-3xl mx-auto text-sm sm:text-base leading-relaxed">Al Haddad Manufacturing Sdn. Bhd. manufactures premix beverages, with an existing portfolio covering coffee, cocoa and tea-based products.</p>
+                </div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                    <div class="lg:col-span-7 space-y-6">
+                        <div class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm">
+                            <h2 class="text-2xl font-bold text-black mb-4">Our Approach</h2>
+                            <p class="text-gray-700 text-sm leading-relaxed mb-4">
+                                We work with businesses looking to create beverages under their own brands, from initial product discussions through to agreed manufacturing arrangements.
+                            </p>
+                            <p class="text-gray-700 text-sm leading-relaxed mb-4">
+                                We take time to understand your product requirements, target customers and commercial considerations.
+                            </p>
+                            <p class="text-gray-700 text-sm leading-relaxed">
+                                Through clear specifications, defined packaging responsibilities and production planning, we help you organise the next steps for your brand.
+                            </p>
+                        </div>
+
+                        <div class="bg-gray-50 p-8 rounded-2xl border border-gray-200">
+                            <h3 class="text-lg font-bold text-black mb-3">Why Partner With Us?</h3>
+                            <ul class="space-y-3 text-xs text-gray-700">
+                                <li class="flex items-center gap-2">
+                                    <i class="fa-solid fa-check text-tealText" aria-hidden="true"></i>
+                                    <span>Specialized focus in coffee, cocoa, and tea formulations.</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i class="fa-solid fa-check text-tealText" aria-hidden="true"></i>
+                                    <span>Comprehensive assistance from idea stage to final production.</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i class="fa-solid fa-check text-tealText" aria-hidden="true"></i>
+                                    <span>Structured quality controls and commercial clarity.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-5">
+                        <div class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm sticky top-28">
+                            <h3 class="text-xl font-bold text-black mb-6 pb-4 border-b border-gray-200">Company Details</h3>
+
+                            <div class="space-y-4 text-xs">
+                                <div>
+                                    <span class="text-gray-600 font-medium block">Registered Name:</span>
+                                    <span class="text-black font-bold text-sm">Al Haddad Manufacturing Sdn. Bhd.</span>
+                                </div>
+                                <div>
+                                    <span class="text-gray-600 font-medium block">Company Registration Number:</span>
+                                    <span class="text-gray-800 font-semibold">1072443-T</span>
+                                </div>
+                                <div>
+                                    <span class="text-gray-600 font-medium block">Manufacturing Address:</span>
+                                    <span class="text-gray-800 font-semibold">K01, K02 & K03 Kedah Halal Park, Fasa 2, Kawasan Perindustrian Sungai Petani, 08000 Sungai Petani, Kedah</span>
+                                </div>
+                                <div>
+                                    <span class="text-gray-600 font-medium block">Business Email:</span>
+                                    <a href="mailto:management.alhaddadmfg@gmail.com" class="text-gray-800 font-semibold underline hover:text-tealText break-all">management.alhaddadmfg@gmail.com</a>
+                                </div>
+                                <div>
+                                    <span class="text-gray-600 font-medium block">Telephone / WhatsApp:</span>
+                                    <a href="tel:+60174699473" class="text-gray-800 font-semibold underline hover:text-tealText">0174699473</a>
+                                </div>
+                            </div>
+
+                            <div class="mt-8 pt-6 border-t border-gray-200">
+                                <button onclick="switchTab('enquiry')" class="btn-shine w-full py-3 rounded-lg bg-turquoise hover:bg-turquoiseDark text-black font-bold text-xs transition-colors">
+                                    Discuss Your OEM Project
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== PAGE 6: START AN OEM PROJECT ==================== -->
+        <section id="page-enquiry" class="tab-content">
+            <div class="bg-black text-white py-16">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <h1 class="text-3xl sm:text-4xl font-extrabold mb-4">Let's Talk About Your Beverage Brand</h1>
+                    <p class="text-gray-300 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">Have a formula ready? Exploring a new product idea? Share your requirements and our team will help you identify the next steps.</p>
+                </div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                    <div class="lg:col-span-8 bg-white p-8 sm:p-10 rounded-2xl border border-gray-200 shadow-sm">
+                        <h2 class="text-2xl font-bold text-black mb-6">OEM Enquiry Form</h2>
+
+                        <form id="oem-form" onsubmit="handleFormSubmit(event)" class="space-y-8" novalidate>
+                            <!-- Honeypot anti-spam: pengguna sebenar tak nampak medan ini -->
+                            <div style="position:absolute;left:-9999px;" aria-hidden="true">
+                                <label for="form-hp">Leave this field empty</label>
+                                <input type="text" id="form-hp" name="contact_me_by_fax_only" tabindex="-1" autocomplete="off">
+                            </div>
+
+                            <div>
+                                <h3 class="text-xs font-bold uppercase tracking-wider text-tealText mb-4 pb-2 border-b border-gray-200">1. Your Details</h3>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <label for="form-name" class="block text-xs font-semibold text-gray-800 mb-1">Name *</label>
+                                        <input type="text" id="form-name" name="Name" required autocomplete="name" class="w-full p-2.5 rounded-lg border border-gray-300 text-sm focus:ring-2 focus:ring-turquoise outline-none" placeholder="Your full name">
+                                    </div>
+                                    <div>
+                                        <label for="form-company" class="block text-xs font-semibold text-gray-800 mb-1">Company Name</label>
+                                        <input type="text" id="form-company" name="Company" autocomplete="organization" class="w-full p-2.5 rounded-lg border border-gray-300 text-sm focus:ring-2 focus:ring-turquoise outline-none" placeholder="Company Sdn Bhd">
+                                    </div>
+                                    <div>
+                                        <label for="form-brand" class="block text-xs font-semibold text-gray-800 mb-1">Brand Name (if available)</label>
+                                        <input type="text" id="form-brand" name="Brand" class="w-full p-2.5 rounded-lg border border-gray-300 text-sm focus:ring-2 focus:ring-turquoise outline-none" placeholder="Your brand name">
+                                    </div>
+                                    <div>
+                                        <label for="form-email" class="block text-xs font-semibold text-gray-800 mb-1">Business Email *</label>
+                                        <input type="email" id="form-email" name="Email" required autocomplete="email" class="w-full p-2.5 rounded-lg border border-gray-300 text-sm focus:ring-2 focus:ring-turquoise outline-none" placeholder="name@company.com">
+                                    </div>
+                                    <div>
+                                        <label for="form-phone" class="block text-xs font-semibold text-gray-800 mb-1">Telephone / WhatsApp Number *</label>
+                                        <input type="tel" id="form-phone" name="Phone Number" required autocomplete="tel" class="w-full p-2.5 rounded-lg border border-gray-300 text-sm focus:ring-2 focus:ring-turquoise outline-none" placeholder="+60 12-345 6789">
+                                    </div>
+                                    <div>
+                                        <label for="form-website" class="block text-xs font-semibold text-gray-800 mb-1">Company Website (if available)</label>
+                                        <input type="url" id="form-website" name="Website" autocomplete="url" class="w-full p-2.5 rounded-lg border border-gray-300 text-sm focus:ring-2 focus:ring-turquoise outline-none" placeholder="https://example.com">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h3 class="text-xs font-bold uppercase tracking-wider text-tealText mb-4 pb-2 border-b border-gray-200">2. Your Project Specifications</h3>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <label for="form-category" class="block text-xs font-semibold text-gray-800 mb-1">Product Category *</label>
+                                        <select id="form-category" name="Product Category" required class="w-full p-2.5 rounded-lg border border-gray-300 text-sm bg-white focus:ring-2 focus:ring-turquoise outline-none">
+                                            <option value="Coffee">Coffee-Based Premix</option>
+                                            <option value="Cocoa & Chocolate">Cocoa & Chocolate-Based</option>
+                                            <option value="Tea">Tea-Based Premix</option>
+                                            <option value="Other">Other Beverage Concept</option>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <label for="form-formulation" class="block text-xs font-semibold text-gray-800 mb-1">Formulation Status *</label>
+                                        <select id="form-formulation" name="Formulation Status" required class="w-full p-2.5 rounded-lg border border-gray-300 text-sm bg-white focus:ring-2 focus:ring-turquoise outline-none">
+                                            <option value="New Concept">New Concept (Need R&D)</option>
+                                            <option value="Existing Formula">Have Existing Formula</option>
+                                            <option value="Modify Product">Modify Existing Product</option>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <label for="form-weight" class="block text-xs font-semibold text-gray-800 mb-1">Preferred Sachet / Pack Weight</label>
+                                        <input type="text" id="form-weight" name="Sachet Weight" class="w-full p-2.5 rounded-lg border border-gray-300 text-sm focus:ring-2 focus:ring-turquoise outline-none" placeholder="e.g., 25g sachet / 500g pouch">
+                                    </div>
+
+                                    <div>
+                                        <label for="form-packaging" class="block text-xs font-semibold text-gray-800 mb-1">Preferred Packaging Format</label>
+                                        <input type="text" id="form-packaging" name="Packaging Format" class="w-full p-2.5 rounded-lg border border-gray-300 text-sm focus:ring-2 focus:ring-turquoise outline-none" placeholder="e.g., Box of 15 sachets, Pouch bag">
+                                    </div>
+
+                                    <div>
+                                        <label for="form-quantity" class="block text-xs font-semibold text-gray-800 mb-1">Estimated Order Quantity</label>
+                                        <input type="text" id="form-quantity" name="Order Quantity" class="w-full p-2.5 rounded-lg border border-gray-300 text-sm focus:ring-2 focus:ring-turquoise outline-none" placeholder="e.g., 1,000 boxes">
+                                    </div>
+
+                                    <div>
+                                        <label for="form-launch" class="block text-xs font-semibold text-gray-800 mb-1">Target Market & Expected Launch Date</label>
+                                        <input type="text" id="form-launch" name="Target Market & Launch" class="w-full p-2.5 rounded-lg border border-gray-300 text-sm focus:ring-2 focus:ring-turquoise outline-none" placeholder="e.g., Malaysia / Q3 2027">
+                                    </div>
+
+                                    <div class="sm:col-span-2">
+                                        <label for="form-desc" class="block text-xs font-semibold text-gray-800 mb-1">Brief Product Description / Additional Requirements</label>
+                                        <textarea id="form-desc" name="Additional Notes" rows="3" class="w-full p-2.5 rounded-lg border border-gray-300 text-sm focus:ring-2 focus:ring-turquoise outline-none" placeholder="Describe flavor expectations, key ingredients, target price point, etc."></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-3 pt-2">
+                                <input type="checkbox" id="form-privacy" required class="mt-1 accent-turquoise">
+                                <label for="form-privacy" class="text-xs text-gray-700 leading-normal">
+                                    Privacy acknowledgement: I have read the <button type="button" class="underline font-semibold text-black hover:text-tealText" onclick="openPrivacy()">Privacy Notice</button> and understand how my enquiry information will be used.
+                                </label>
+                            </div>
+
+                            <p id="form-error" class="hidden text-xs font-semibold text-red-700 bg-red-50 border border-red-200 rounded-lg p-3" role="alert"></p>
+
+                            <button type="submit" id="form-submit" class="btn-shine w-full py-4 rounded-xl bg-turquoise hover:bg-turquoiseDark text-black font-bold text-sm shadow-md transition-all flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+                                <span id="form-submit-text">Submit OEM Enquiry</span>
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="lg:col-span-4 space-y-6">
+                        <div class="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
+                            <h3 class="text-base font-bold text-black mb-3 flex items-center gap-2">
+                                <i class="fa-solid fa-circle-question text-tealText" aria-hidden="true"></i>
+                                <span>What Happens Next?</span>
+                            </h3>
+                            <p class="text-xs text-gray-700 leading-relaxed">
+                                Our team will review your enquiry and contact you to clarify the requirements and discuss suitable next steps.
+                            </p>
+                        </div>
+
+                        <div class="bg-gray-50 p-6 rounded-2xl border border-gray-200">
+                            <h3 class="text-base font-bold text-black mb-4">Prefer WhatsApp or Email?</h3>
+
+                            <div class="space-y-3 text-xs mb-6">
+                                <div class="flex items-center gap-2 text-gray-800">
+                                    <i class="fa-brands fa-whatsapp text-lg text-green-700" aria-hidden="true"></i>
+                                    <span>WhatsApp: <a href="tel:+60174699473" class="font-bold text-black underline">0174699473</a></span>
+                                </div>
+                                <div class="flex items-center gap-2 text-gray-800">
+                                    <i class="fa-solid fa-envelope text-lg text-black" aria-hidden="true"></i>
+                                    <span>Email: <a href="mailto:management.alhaddadmfg@gmail.com" class="font-bold text-black underline break-all">management.alhaddadmfg@gmail.com</a></span>
+                                </div>
+                            </div>
+
+                            <button onclick="sendDirectWhatsApp()" class="w-full py-3 rounded-lg bg-green-700 hover:bg-green-600 text-white font-bold text-xs shadow transition-colors flex items-center justify-center gap-2">
+                                <i class="fa-brands fa-whatsapp text-base" aria-hidden="true"></i>
+                                <span>WhatsApp Our Team</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-black text-gray-300 pt-16 pb-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 mb-12">
+                <div class="lg:col-span-5 space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <img src="Company Logo.jpg" alt="Al Haddad Manufacturing Logo" class="h-10 w-auto object-contain bg-white p-1 rounded">
+                        <span class="text-white font-bold text-lg">Al Haddad Manufacturing Sdn. Bhd.</span>
+                    </div>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        OEM / Private Label Premix Beverage Manufacturing
+                    </p>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        Company registration number: 1072443-T<br>
+                        Address: K01, K02 & K03 Kedah Halal Park, Fasa 2, Kawasan Perindustrian Sungai Petani, 08000 Sungai Petani, Kedah.
+                    </p>
+                </div>
+
+                <div class="lg:col-span-3">
+                    <h2 class="text-xs font-bold uppercase tracking-wider text-turquoise mb-4">Quick Links</h2>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#home" class="hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#oem" class="hover:text-white transition-colors">OEM Manufacturing</a></li>
+                        <li><a href="#categories" class="hover:text-white transition-colors">Product Categories</a></li>
+                        <li><a href="#quality" class="hover:text-white transition-colors">Manufacturing & Quality</a></li>
+                        <li><a href="#about" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#enquiry" class="hover:text-white transition-colors">OEM Enquiry</a></li>
+                    </ul>
+                </div>
+
+                <div class="lg:col-span-4">
+                    <h2 class="text-xs font-bold uppercase tracking-wider text-turquoise mb-4">Contact Information</h2>
+                    <ul class="space-y-2 text-xs text-gray-300">
+                        <li>Email: <a href="mailto:management.alhaddadmfg@gmail.com" class="underline hover:text-white break-all">management.alhaddadmfg@gmail.com</a></li>
+                        <li>Telephone / WhatsApp: <a href="tel:+60174699473" class="underline hover:text-white">0174699473</a></li>
+                        <li class="pt-2"><button type="button" onclick="openPrivacy()" class="underline hover:text-white">Privacy Notice</button></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-gray-800 text-center text-xs text-gray-400 space-y-3">
+                <p class="font-medium text-gray-300">
+                    All OEM projects are subject to technical feasibility, production availability and agreed specifications and commercial terms.
+                </p>
+                <p>© <span id="year"></span> Al Haddad Manufacturing Sdn. Bhd. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SUCCESS MODAL -->
+    <div id="success-modal" class="fixed inset-0 bg-black/60 z-[90] flex items-center justify-center p-4 hidden" role="dialog" aria-modal="true" aria-labelledby="success-title">
+        <div class="modal-box bg-white rounded-2xl max-w-md w-full p-6 text-center shadow-2xl relative">
+            <div class="w-16 h-16 bg-green-100 text-green-700 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
+                <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+            </div>
+            <h3 id="success-title" class="text-xl font-bold text-black mb-2">OEM Enquiry Received!</h3>
+            <p class="text-xs text-gray-700 mb-6 leading-relaxed">
+                Thank you for submitting your beverage project enquiry. Our team will review your specifications and get in touch shortly.
+            </p>
+            <div class="space-y-2">
+                <button id="success-close" onclick="closeModal('success-modal', true)" class="w-full py-2.5 rounded-lg bg-turquoise text-black font-bold text-xs hover:bg-turquoiseDark">
+                    Close
+                </button>
+                <button onclick="sendModalWhatsApp()" class="w-full py-2.5 rounded-lg bg-green-700 text-white font-bold text-xs hover:bg-green-600 flex items-center justify-center gap-1.5">
+                    <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+                    <span>Forward Details to WhatsApp</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PRIVACY NOTICE MODAL (DRAF - sila semak dengan penasihat undang-undang anda) -->
+    <div id="privacy-modal" class="fixed inset-0 bg-black/60 z-[90] flex items-center justify-center p-4 hidden" role="dialog" aria-modal="true" aria-labelledby="privacy-title">
+        <div class="modal-box bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl max-h-[85vh] overflow-y-auto">
+            <h3 id="privacy-title" class="text-xl font-bold text-black mb-3">Privacy Notice</h3>
+            <div class="text-xs text-gray-700 leading-relaxed space-y-3">
+                <p><strong>Who we are.</strong> Al Haddad Manufacturing Sdn. Bhd. (1072443-T) is the data user for personal data collected through this website, in line with the Personal Data Protection Act 2010 (Malaysia).</p>
+                <p><strong>What we collect.</strong> The details you enter in the OEM enquiry form: your name, company and brand name, email address, telephone / WhatsApp number, website, and your project details.</p>
+                <p><strong>How we use it.</strong> To review and respond to your enquiry, discuss your project, prepare quotations and follow up on your request. We do not sell your personal data.</p>
+                <p><strong>Disclosure.</strong> Your information may be handled by service providers that help us run our enquiry system (for example, Google). It is otherwise kept within our team unless required by law.</p>
+                <p><strong>Retention and your rights.</strong> We keep enquiry records only as long as needed for the purposes above. You may ask to access, correct or delete your personal data by emailing <a href="mailto:management.alhaddadmfg@gmail.com" class="underline">management.alhaddadmfg@gmail.com</a>.</p>
+                <p><strong>Contact.</strong> K01, K02 &amp; K03 Kedah Halal Park, Fasa 2, Kawasan Perindustrian Sungai Petani, 08000 Sungai Petani, Kedah. Tel: 0174699473.</p>
+            </div>
+            <button id="privacy-close" onclick="closeModal('privacy-modal')" class="mt-6 w-full py-2.5 rounded-lg bg-turquoise text-black font-bold text-xs hover:bg-turquoiseDark">Close</button>
+        </div>
+    </div>
+
+    <!-- ERROR MODAL -->
+    <div id="error-modal" class="fixed inset-0 bg-black/60 z-[90] flex items-center justify-center p-4 hidden" role="alertdialog" aria-modal="true" aria-labelledby="error-title">
+        <div class="modal-box bg-white rounded-2xl max-w-md w-full p-6 text-center shadow-2xl">
+            <div class="w-16 h-16 bg-red-100 text-red-700 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
+                <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
+            </div>
+            <h3 id="error-title" class="text-xl font-bold text-black mb-2">We couldn't send your enquiry</h3>
+            <p class="text-xs text-gray-700 mb-6 leading-relaxed">
+                Please check your internet connection and try again, or send your details to our team directly via WhatsApp.
+            </p>
+            <div class="space-y-2">
+                <button id="error-close" onclick="closeModal('error-modal')" class="w-full py-2.5 rounded-lg bg-turquoise text-black font-bold text-xs hover:bg-turquoiseDark">Try Again</button>
+                <button onclick="sendModalWhatsApp(true)" class="w-full py-2.5 rounded-lg bg-green-700 text-white font-bold text-xs hover:bg-green-600 flex items-center justify-center gap-1.5">
+                    <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+                    <span>Send via WhatsApp Instead</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FLOATING WHATSAPP (berdenyut) -->
+    <a href="https://wa.me/60174699473?text=Hello%20Al%20Haddad%20Manufacturing,%20I%20would%20like%20to%20discuss%20an%20OEM%20beverage%20project." target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp"
+       class="wa-float fixed bottom-24 right-6 z-50 w-14 h-14 rounded-full bg-green-600 text-white flex items-center justify-center text-3xl shadow-xl hover:bg-green-500 hover:scale-110 transition-transform">
+        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+    </a>
+
+    <!-- FLOATING SOCIAL MEDIA WIDGET -->
+    <div id="social-wrap" class="fixed bottom-6 right-6 z-50 flex items-center">
+        <div class="pill flex items-center bg-white border-2 border-black rounded-full shadow-2xl p-2">
+
+            <button type="button" id="social-toggle" class="flex items-center gap-2.5 px-3 py-1 shrink-0" aria-expanded="false" aria-controls="social-icons" aria-label="Find us on social media">
+                <span class="w-3 h-3 rounded-full bg-black animate-pulse" aria-hidden="true"></span>
+                <span class="text-base sm:text-lg font-black text-black tracking-wider uppercase whitespace-nowrap">FIND US</span>
+                <i class="chev fa-solid fa-chevron-left text-xs text-black transition-transform duration-300" aria-hidden="true"></i>
+            </button>
+
+            <div id="social-icons" class="icons flex items-center gap-2 pr-2 shrink-0">
+                <div class="h-6 w-[2px] bg-black/30 mr-1"></div>
+
+                <a href="https://web.facebook.com/alhaddad.manufacturing.73/?_rdc=1&_rdr#" target="_blank" rel="noopener noreferrer"
+                   class="w-9 h-9 rounded-full bg-blue-600 text-white flex items-center justify-center text-sm hover:scale-110 hover:bg-blue-700 transition-all shadow-md" title="Facebook" aria-label="Facebook">
+                    <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
+                </a>
+
+                <a href="https://www.instagram.com/alhaddadmanufacturing?cplk=a3V0NW8zaHNkMHR3" target="_blank" rel="noopener noreferrer"
+                   class="w-9 h-9 rounded-full bg-gradient-to-tr from-yellow-500 via-pink-600 to-purple-600 text-white flex items-center justify-center text-sm hover:scale-110 transition-all shadow-md" title="Instagram" aria-label="Instagram">
+                    <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                </a>
+
+                <a href="https://www.linkedin.com/company/al-haddad-manufacturing-sdn-bhd/" target="_blank" rel="noopener noreferrer"
+                   class="w-9 h-9 rounded-full bg-blue-700 text-white flex items-center justify-center text-sm hover:scale-110 hover:bg-blue-800 transition-all shadow-md" title="LinkedIn" aria-label="LinkedIn">
+                    <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+                </a>
+
+                <a href="http://www.youtube.com/@alhaddadmanufacturingsdnbh9429" target="_blank" rel="noopener noreferrer"
+                   class="w-9 h-9 rounded-full bg-red-600 text-white flex items-center justify-center text-sm hover:scale-110 hover:bg-red-700 transition-all shadow-md" title="YouTube" aria-label="YouTube">
+                    <i class="fa-brands fa-youtube" aria-hidden="true"></i>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+    (function () {
+        const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const WA_NUMBER = '60174699473';
+        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwSvFTSxk48l_3L1p3Ya_oufILdO9vj-Q7i5irPNiI_KC3UWE23wQA8kojjzOPkZ5vAGw/exec';
+
+        const TABS = ['home', 'oem', 'categories', 'quality', 'about', 'enquiry'];
+        const TITLES = {
+            home: 'OEM Beverages Products | Al Haddad Manufacturing',
+            oem: 'OEM Premix Beverage Manufacturing | Al Haddad Manufacturing',
+            categories: 'Premix Product Categories | Al Haddad Manufacturing',
+            quality: 'Manufacturing & Quality | Al Haddad Manufacturing',
+            about: 'About Us | Al Haddad Manufacturing',
+            enquiry: 'Start an OEM Project | Al Haddad Manufacturing'
+        };
+
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        /* ===== Navigasi tab dengan hash (#oem, #about, ...) ===== */
+        function showTab(tabId) {
+            if (!TABS.includes(tabId)) tabId = 'home';
+
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+            const target = document.getElementById('page-' + tabId);
+            if (target) target.classList.add('active');
+
+            document.querySelectorAll('.nav-btn, .mobile-nav-btn').forEach(b => b.classList.remove('active'));
+            const desktopBtn = document.getElementById('nav-' + tabId);
+            if (desktopBtn && desktopBtn.classList.contains('nav-btn')) desktopBtn.classList.add('active');
+            const mobileBtn = document.querySelector('.mobile-nav-btn[data-tab="' + tabId + '"]');
+            if (mobileBtn) mobileBtn.classList.add('active');
+
+            document.title = TITLES[tabId] || TITLES.home;
+            setMobileMenu(false);
+            window.scrollTo({ top: 0 });
+        }
+
+        window.switchTab = function (tabId) {
+            if (location.hash === '#' + tabId) showTab(tabId);
+            else location.hash = tabId;
+        };
+
+        window.addEventListener('hashchange', () => showTab(location.hash.replace('#', '')));
+
+        /* ===== Menu mudah alih ===== */
+        function setMobileMenu(open) {
+            const menu = document.getElementById('mobile-menu');
+            const btn = document.getElementById('mobile-menu-btn');
+            const icon = document.getElementById('menu-icon');
+            menu.classList.toggle('hidden', !open);
+            btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+            btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+            icon.className = open ? 'fa-solid fa-xmark text-xl' : 'fa-solid fa-bars text-xl';
+        }
+        window.toggleMobileMenu = function () {
+            setMobileMenu(document.getElementById('mobile-menu').classList.contains('hidden'));
+        };
+
+        /* ===== Penganggar batch (nombor "berlari") ===== */
+        function fmt(v, d) {
+            return v.toLocaleString(undefined, { minimumFractionDigits: d, maximumFractionDigits: d });
+        }
+        function animateNumber(el, to, suffix, decimals) {
+            const from = parseFloat(el.dataset.v || '0');
+            el.dataset.v = to;
+            if (reduce) { el.textContent = fmt(to, decimals) + suffix; return; }
+            const t0 = performance.now(), dur = 500;
+            (function tick(t) {
+                const p = Math.min((t - t0) / dur, 1);
+                const v = from + (to - from) * (1 - Math.pow(1 - p, 3));
+                el.textContent = fmt(v, decimals) + suffix;
+                if (p < 1) requestAnimationFrame(tick);
+            })(t0);
+        }
+        window.updateEstimator = function () {
+            const weight = parseInt(document.getElementById('est-weight').value) || 25;
+            const packSize = parseInt(document.getElementById('est-pack-size').value) || 15;
+            const packs = parseInt(document.getElementById('est-packs').value) || 1000;
+
+            document.getElementById('weight-val').textContent = weight + 'g per sachet';
+
+            const totalSachets = packs * packSize;
+            const totalKg = (totalSachets * weight) / 1000;
+            animateNumber(document.getElementById('res-sachets'), totalSachets, ' sachets', 0);
+            animateNumber(document.getElementById('res-mass'), totalKg, ' kg', 1);
+        };
+
+        /* ===== Penapis kategori ===== */
+        window.filterCategory = function (cat) {
+            document.querySelectorAll('.cat-card').forEach(card => {
+                card.style.display = (cat === 'all' || card.classList.contains(cat)) ? 'flex' : 'none';
+            });
+            document.querySelectorAll('.cat-filter-btn').forEach(btn => {
+                btn.classList.remove('bg-[#40E0D0]', 'text-black');
+                btn.classList.add('bg-white', 'text-gray-800');
+            });
+            const activeBtn = document.getElementById('cat-btn-' + cat);
+            if (activeBtn) {
+                activeBtn.classList.add('bg-[#40E0D0]', 'text-black');
+                activeBtn.classList.remove('bg-white', 'text-gray-800');
+            }
+        };
+
+        window.quickEnquire = function (categoryName) {
+            const sel = document.getElementById('form-category');
+            if (sel) sel.value = categoryName;
+            window.switchTab('enquiry');
+        };
+
+        /* ===== Modal ===== */
+        let lastFocus = null;
+        function openModal(id, focusId) {
+            lastFocus = document.activeElement;
+            const m = document.getElementById(id);
+            m.classList.remove('hidden');
+            const f = document.getElementById(focusId);
+            if (f) f.focus();
+        }
+        window.closeModal = function (id, resetForm) {
+            document.getElementById(id).classList.add('hidden');
+            if (resetForm) document.getElementById('oem-form').reset();
+            if (lastFocus && lastFocus.focus) lastFocus.focus();
+        };
+        window.openPrivacy = function () { openModal('privacy-modal', 'privacy-close'); };
+        document.addEventListener('keydown', e => {
+            if (e.key !== 'Escape') return;
+            ['privacy-modal', 'error-modal'].forEach(id => {
+                const m = document.getElementById(id);
+                if (!m.classList.contains('hidden')) window.closeModal(id);
+            });
+            const s = document.getElementById('success-modal');
+            if (!s.classList.contains('hidden')) window.closeModal('success-modal', true);
+            document.getElementById('social-wrap').classList.remove('open');
+            document.getElementById('social-toggle').setAttribute('aria-expanded', 'false');
+        });
+
+        /* ===== Borang ===== */
+        let lastFormData = null;
+
+        function collectForm() {
+            const v = id => document.getElementById(id).value.trim();
+            return {
+                "Name": v('form-name'),
+                "Company": v('form-company'),
+                "Brand": v('form-brand'),
+                "Email": v('form-email'),
+                "Phone Number": v('form-phone'),
+                "Website": v('form-website'),
+                "Product Category": v('form-category'),
+                "Formulation Status": v('form-formulation'),
+                "Sachet Weight": v('form-weight'),
+                "Packaging Format": v('form-packaging'),
+                "Order Quantity": v('form-quantity'),
+                "Target Market & Launch": v('form-launch'),
+                "Additional Notes": v('form-desc')
+            };
+        }
+
+        function showFormError(msg) {
+            const el = document.getElementById('form-error');
+            el.textContent = msg;
+            el.classList.remove('hidden');
+        }
+
+        window.handleFormSubmit = function (event) {
+            event.preventDefault();
+            const form = event.target;
+            const errEl = document.getElementById('form-error');
+            errEl.classList.add('hidden');
+
+            // Honeypot: bot akan isi medan ini
+            if (document.getElementById('form-hp').value) return;
+
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                showFormError('Please complete the required fields and accept the privacy acknowledgement.');
+                return;
+            }
+
+            const data = collectForm();
+            lastFormData = data;
+
+            const btn = document.getElementById('form-submit');
+            const btnText = document.getElementById('form-submit-text');
+            btn.disabled = true;
+            btn.classList.add('opacity-70', 'cursor-not-allowed');
+            btnText.textContent = 'Sending...';
+
+            // Nota: mode "no-cors" bermaksud respons Google Apps Script tidak boleh dibaca.
+            // Ralat rangkaian (tiada internet / disekat) akan tertangkap di sini;
+            // ralat di dalam skrip Apps Script sendiri tidak dapat dikesan dari pelayar.
+            fetch(APPS_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                body: JSON.stringify(data)
+            })
+            .then(() => {
+                openModal('success-modal', 'success-close');
+            })
+            .catch(err => {
+                console.error('Submit error:', err);
+                openModal('error-modal', 'error-close');
+            })
+            .finally(() => {
+                btn.disabled = false;
+                btn.classList.remove('opacity-70', 'cursor-not-allowed');
+                btnText.textContent = 'Submit OEM Enquiry';
+            });
+        };
+
+        window.sendModalWhatsApp = function (fromError) {
+            const d = lastFormData;
+            if (!d) return;
+            const text =
+`Hello Al Haddad Manufacturing Team,
+
+I would like to submit an OEM enquiry:
+- Name: ${d["Name"]}
+- Company/Brand: ${d["Company"] || 'N/A'} (${d["Brand"] || 'N/A'})
+- Email: ${d["Email"]}
+- Phone: ${d["Phone Number"]}
+- Category: ${d["Product Category"]}
+- Formulation: ${d["Formulation Status"]}
+- Pack Weight: ${d["Sachet Weight"] || 'N/A'}
+- Packaging: ${d["Packaging Format"] || 'N/A'}
+- Target Quantity: ${d["Order Quantity"] || 'N/A'}
+- Target Market & Launch: ${d["Target Market & Launch"] || 'N/A'}
+- Message: ${d["Additional Notes"] || 'N/A'}`;
+            window.open('https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(text), '_blank', 'noopener');
+            if (fromError) window.closeModal('error-modal');
+            else window.closeModal('success-modal', true);
+        };
+
+        window.sendDirectWhatsApp = function () {
+            const name = document.getElementById('form-name').value.trim() || 'a potential client';
+            const category = document.getElementById('form-category').value || 'Premix Beverages';
+            const text = `Hello Al Haddad Manufacturing Team, I am ${name} and I would like to inquire about OEM manufacturing for ${category}.`;
+            window.open('https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(text), '_blank', 'noopener');
+        };
+
+        /* ===== Widget FIND US (tap di telefon) ===== */
+        const socialWrap = document.getElementById('social-wrap');
+        const socialToggle = document.getElementById('social-toggle');
+        socialToggle.addEventListener('click', () => {
+            const open = socialWrap.classList.toggle('open');
+            socialToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+        document.addEventListener('click', e => {
+            if (!socialWrap.contains(e.target)) {
+                socialWrap.classList.remove('open');
+                socialToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        /* ===== ANIMASI: scroll reveal ===== */
+        if (!reduce && 'IntersectionObserver' in window) {
+            const targets = document.querySelectorAll(
+                'main h2, main .grid > div, main .grid > a, main .max-w-3xl.mx-auto.text-center, main .rounded-3xl, main .rounded-2xl.shadow-lg'
+            );
+            const io = new IntersectionObserver(entries => {
+                entries.forEach(e => {
+                    if (!e.isIntersecting) return;
+                    const el = e.target;
+                    el.classList.add('visible');
+                    io.unobserve(el);
+                    // Buang kelas selepas siap supaya hover / tilt tak terganggu
+                    setTimeout(() => {
+                        el.classList.remove('reveal', 'visible');
+                        el.style.transitionDelay = '';
+                    }, 1400);
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+            targets.forEach(el => {
+                if (el.closest('.hero-stack')) return;
+                const siblings = el.parentElement ? Array.from(el.parentElement.children) : [];
+                const i = Math.max(0, siblings.indexOf(el));
+                el.style.transitionDelay = Math.min(i * 90, 450) + 'ms';
+                el.classList.add('reveal');
+                io.observe(el);
+            });
+        }
+
+        /* ===== ANIMASI: bar kemajuan, header, parallax ===== */
+        const bar = document.getElementById('scroll-progress');
+        const header = document.querySelector('header');
+        const heroBg = document.getElementById('hero-bg');
+        let ticking = false;
+        function onScroll() {
+            const h = document.documentElement;
+            const pct = (h.scrollTop / ((h.scrollHeight - h.clientHeight) || 1)) * 100;
+            bar.style.width = pct + '%';
+            header.classList.toggle('scrolled', h.scrollTop > 20);
+            if (!reduce && heroBg) {
+                const y = Math.min(h.scrollTop * 0.15, 30);
+                heroBg.style.transform = 'translate3d(0,' + y.toFixed(1) + 'px,0) scale(1.12)';
+            }
+            ticking = false;
+        }
+        window.addEventListener('scroll', () => {
+            if (!ticking) { ticking = true; requestAnimationFrame(onScroll); }
+        }, { passive: true });
+
+        /* ===== ANIMASI: tilt 3D (komputer sahaja) ===== */
+        if (!reduce && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+            document.querySelectorAll('.card-hover, .cat-card').forEach(card => {
+                card.addEventListener('mousemove', e => {
+                    const r = card.getBoundingClientRect();
+                    const x = (e.clientX - r.left) / r.width - 0.5;
+                    const y = (e.clientY - r.top) / r.height - 0.5;
+                    card.classList.add('tilting');
+                    card.style.transform =
+                        'perspective(800px) rotateX(' + (-y * 6).toFixed(2) + 'deg) rotateY(' + (x * 8).toFixed(2) + 'deg) translateY(-4px)';
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = '';
+                    setTimeout(() => card.classList.remove('tilting'), 200);
+                });
+            });
+        }
+
+        /* ===== ANIMASI: riak pada butang ===== */
+        document.addEventListener('click', e => {
+            const btn = e.target.closest('.btn-shine');
+            if (!btn || reduce) return;
+            const r = btn.getBoundingClientRect();
+            const size = Math.max(r.width, r.height);
+            const s = document.createElement('span');
+            s.className = 'ripple';
+            s.style.width = s.style.height = size + 'px';
+            s.style.left = (e.clientX - r.left - size / 2) + 'px';
+            s.style.top = (e.clientY - r.top - size / 2) + 'px';
+            btn.appendChild(s);
+            setTimeout(() => s.remove(), 600);
+        });
+
+        /* ===== Mula ===== */
+        showTab(location.hash.replace('#', '') || 'home');
+        window.updateEstimator();
+        onScroll();
+    })();
+    </script>
+
+</body>
+</html>
